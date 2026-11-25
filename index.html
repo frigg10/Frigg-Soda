@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frigg Soda — Crisp. Clean. Legendary.</title>
+  <meta name="description" content="Frigg Soda. Limited editions. Bold flavors. Live Legendary." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Frigg<span>Soda</span></a>
+      <nav class="nav">
+        <a href="#flavors">Flavors</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-sm">Find Us</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menu" id="menuToggle">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Live Legendary</p>
+          <h1>Crisp. Clean.<br /><span>Legendary.</span></h1>
+          <p class="hero-sub">
+            Bold limited editions and everyday classics.
+            Built for the moment you decide to go all in.
+          </p>
+          <div class="hero-actions">
+            <a href="#flavors" class="btn">Explore Flavors</a>
+            <a href="#about" class="btn btn-ghost">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="images/original.png" alt="Frigg Soda original can" class="hero-can" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Flavors -->
+    <section class="flavors" id="flavors">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Limited & Core</p>
+          <h2>Choose your energy</h2>
+        </div>
+
+        <div class="flavor-grid">
+          <!-- Original -->
+          <article class="flavor-card" data-flavor="original">
+            <div class="can-wrap">
+              <img src="images/original.png" alt="Frigg Original" />
+            </div>
+            <div class="flavor-info">
+              <span class="tag">Core</span>
+              <h3>Original</h3>
+              <p class="tagline">Crisp. Clean. Legendary.</p>
+              <p class="desc">The foundation. Sharp, clean, and built to last the whole night.</p>
+            </div>
+          </article>
+
+          <!-- Dashing Berry -->
+          <article class="flavor-card" data-flavor="berry">
+            <div class="can-wrap">
+              <img src="images/dashing-berry.png" alt="Frigg Dashing Berry" />
+            </div>
+            <div class="flavor-info">
+              <span class="tag limited">Limited</span>
+              <h3>Dashing Berry</h3>
+              <p class="tagline">Berry. Insane. Chaotic.</p>
+              <p class="desc">Bright berry rush with a chaotic edge. Limited run, zero chill.</p>
+            </div>
+          </article>
+
+          <!-- Iced Latte -->
+          <article class="flavor-card" data-flavor="latte">
+            <div class="can-wrap">
+              <img src="images/iced-latte.png" alt="Frigg Iced Latte" />
+            </div>
+            <div class="flavor-info">
+              <span class="tag limited">Limited</span>
+              <h3>Iced Latte</h3>
+              <p class="tagline">Coffee. Smooth. Unstoppable.</p>
+              <p class="desc">Smooth coffee kick that keeps moving. Cold, clean, relentless.</p>
+            </div>
+          </article>
+
+          <!-- Femboy Fizz -->
+          <article class="flavor-card" data-flavor="fizz">
+            <div class="can-wrap">
+              <img src="images/femboy-fizz.png" alt="Frigg Femboy Fizz" />
+            </div>
+            <div class="flavor-info">
+              <span class="tag limited">Limited</span>
+              <h3>Femboy Fizz</h3>
+              <p class="tagline">Sweet. Sparkly. Unapologetic.</p>
+              <p class="desc">Soft, sparkling, and completely itself. Limited and loud about it.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <div class="about-text">
+          <p class="eyebrow">The Brand</p>
+          <h2>Made for the ones who don’t half-ass it.</h2>
+          <p>
+            Frigg started as a simple idea: a soda that actually feels like an event.
+            Clean formulas, loud limited drops, and packaging that doesn’t hide.
+          </p>
+          <p>
+            Every can is built the same way — crisp, deliberate, and ready for whatever
+            you throw at the night.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">12</span>
+            <span class="stat-label">oz cans</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">current drops</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">0</span>
+            <span class="stat-label">compromises</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <h2>Where to find Frigg</h2>
+        <p>Selected retailers, events, and online drops. Stay ready.</p>
+        <div class="contact-actions">
+          <a href="mailto:hello@friggsoda.com" class="btn">hello@friggsoda.com</a>
+          <a href="#" class="btn btn-ghost">Follow the drops</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="logo-sm">Frigg Soda</span>
+      <p>© 2026 Frigg. Live Legendary.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
