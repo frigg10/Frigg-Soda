@@ -9,6 +9,74 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .flavor-card {
+      position: relative;
+      overflow: visible;
+    }
+
+    .flavor-card.more-open {
+      z-index: 5;
+    }
+
+    .more-button {
+      align-self: flex-start;
+      margin-top: 0.85rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .more-button:hover {
+      background: rgba(34, 211, 238, 0.2);
+    }
+
+    .more-popout {
+      position: absolute;
+      bottom: calc(100% + 0.75rem);
+      left: 50%;
+      z-index: 10;
+      width: min(280px, calc(100vw - 2rem));
+      padding: 1rem 2.5rem 1rem 1rem;
+      transform: translateX(-50%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .more-popout[hidden] {
+      display: none;
+    }
+
+    .more-popout h4 {
+      margin-bottom: 0.35rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .more-popout p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .more-close {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.65rem;
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font: inherit;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -30,10 +98,10 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-content">
-          <p class="eyebrow">Live Legendary</p>
-          <h1>Crisp. Clean.<br /><span>Legendary.</span></h1>
+          <p class="eyebrow">live legendary</p>
+          <h1>crispy and clean and oh so<br /><span>legendary.</span></h1>
           <p class="hero-sub">
-            Limited edition's stay not long, get it before its sold out!
+            grab yo limited and shit before it leaves
           </p>
           <div class="hero-actions">
             <a href="#flavors" class="btn">Explore Flavors</a>
@@ -50,7 +118,7 @@
     <section class="flavors" id="flavors">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">Limited & Core</p>
+          <p class="eyebrow">limiteds n og</p>
           <h2>pick your flavour.</h2>
         </div>
 
@@ -61,11 +129,17 @@
               <img src="images/original.png" alt="Frigg Original" />
             </div>
             <div class="flavor-info">
-              <span class="tag">Core</span>
+              <span class="tag">og</span>
               <h3>Original</h3>
-              <p class="tagline">Crisp. Clean. Legendary.</p>
+              <p class="tagline">the OG GOAT</p>
               <p class="desc">the og shit</p>
               <p class="price">£1.50</p>
+              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-original">More</button>
+              <div class="more-popout" id="more-original" role="region" aria-labelledby="more-title-original" hidden>
+                <button class="more-close" type="button" aria-label="Close details">Close</button>
+                <h4 id="more-title-original">About Original</h4>
+                <p>tastes fruity with a nice lil fizz to it</p>
+              </div>
             </div>
           </article>
 
@@ -80,6 +154,12 @@
               <p class="tagline">Berry. Insane. Chaotic.</p>
               <p class="desc">sickass shit</p>
               <p class="price">£1.50</p>
+              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-berry">More</button>
+              <div class="more-popout" id="more-berry" role="region" aria-labelledby="more-title-berry" hidden>
+                <button class="more-close" type="button" aria-label="Close details">Close</button>
+                <h4 id="more-title-berry">About Dashing Berry</h4>
+                <p>hella berry</p>
+              </div>
             </div>
           </article>
 
@@ -94,6 +174,12 @@
               <p class="tagline">Coffee. Smooth. Unstoppable.</p>
               <p class="desc">deadass one of the best lol</p>
               <p class="price">£1.50</p>
+              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-latte">More</button>
+              <div class="more-popout" id="more-latte" role="region" aria-labelledby="more-title-latte" hidden>
+                <button class="more-close" type="button" aria-label="Close details">Close</button>
+                <h4 id="more-title-latte">About Iced Latte</h4>
+                <p>get yo coffee cuh.</p>
+              </div>
             </div>
           </article>
 
@@ -108,6 +194,12 @@
               <p class="tagline">Sweet. Sparkly. Unapologetic.</p>
               <p class="desc">FEMININE MALE SHIT</p>
               <p class="price">£2.00</p>
+              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-fizz">More</button>
+              <div class="more-popout" id="more-fizz" role="region" aria-labelledby="more-title-fizz" hidden>
+                <button class="more-close" type="button" aria-label="Close details">Close</button>
+                <h4 id="more-title-fizz">About Femboy Fizz</h4>
+                <p>blueberry candy floss shit</p>
+              </div>
             </div>
           </article>
         </div>
@@ -118,15 +210,13 @@
     <section class="about" id="about">
       <div class="container about-inner">
         <div class="about-text">
-          <p class="eyebrow">The Brand</p>
-          <h2>Made for the ones who don’t half-ass it.</h2>
+          <p class="eyebrow">FRIGG SODA!!</p>
+          <h2>made for people who arent sore losers</h2>
           <p>
-            Frigg started as a simple idea: a soda that actually feels like an event.
-            Clean formulas, loud limited drops, and packaging that doesn’t hide.
+            basically started as a community thing that we thought of, decided to make it real with 5 hours of HTML!
           </p>
           <p>
-            Every can is built the same way — crisp, deliberate, and ready for whatever
-            you throw at the night.
+            please support me by purchasing a drink! it helps alot and hopefully this can grow into a wider project! 👑
           </p>
         </div>
         <div class="about-stats">
@@ -149,11 +239,11 @@
     <!-- Contact / CTA -->
     <section class="contact" id="contact">
       <div class="container contact-inner">
-        <h2>Where to find Frigg</h2>
-        <p>Selected retailers, events, and online drops. Stay ready.</p>
+        <h2>Plans for the future?</h2>
+        <p>Our plans for the future include trying to get into retailers!!! If we can do that that'd be awesome, please support me with purchasing things.</p>
         <div class="contact-actions">
-          <a href="mailto:hello@friggsoda.com" class="btn">hello@friggsoda.com</a>
-          <a href="#" class="btn btn-ghost">Follow the drops</a>
+          <a href="mailto:hello@friggsoda.com" class="btn">friggsoda@gmail.com</a>
+          <a href="#" class="btn btn-ghost">maybe we can get a domain one day.</a>
         </div>
       </div>
     </section>
@@ -161,11 +251,50 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span class="logo-sm">Frigg Soda</span>
-      <p>© 2026 Frigg. Live Legendary.</p>
+      <span class="logo-sm">Frigg Soda ❤️</span>
+      <p>© 2026 Frigg's soda shop</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const moreButtons = document.querySelectorAll(".more-button");
+
+    function closeMore(button, restoreFocus = false) {
+      const panel = document.getElementById(button.getAttribute("aria-controls"));
+      panel.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+      button.closest(".flavor-card").classList.remove("more-open");
+      if (restoreFocus) button.focus();
+    }
+
+    moreButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+        moreButtons.forEach((otherButton) => closeMore(otherButton));
+        if (isOpen) return;
+
+        const panel = document.getElementById(button.getAttribute("aria-controls"));
+        panel.hidden = false;
+        button.setAttribute("aria-expanded", "true");
+        button.closest(".flavor-card").classList.add("more-open");
+      });
+    });
+
+    document.querySelectorAll(".more-close").forEach((closeButton) => {
+      closeButton.addEventListener("click", () => {
+        const button = closeButton.closest(".flavor-card").querySelector(".more-button");
+        closeMore(button, true);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      const openButton = Array.from(moreButtons).find(
+        (button) => button.getAttribute("aria-expanded") === "true"
+      );
+      if (openButton) closeMore(openButton, true);
+    });
+  </script>
 </body>
 </html>
