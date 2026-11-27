@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frigg Soda</title>
+  <title>Frigg Soda — Crisp. Clean. Legendary.</title>
   <meta name="description" content="Frigg Soda. Limited editions. Bold flavors. Live Legendary." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -332,9 +332,14 @@
       font-size: 1rem;
     }
 
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
+    }
+
     .more-button {
-      align-self: flex-start;
-      margin-top: 0.65rem;
       padding: 0.3rem 0.7rem;
       border: 1px dashed var(--border-strong);
       border-radius: 2px;
@@ -349,6 +354,26 @@
     .more-button:hover {
       background: var(--accent-soft);
       border-style: solid;
+    }
+
+    .order-btn {
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      background: var(--accent);
+      color: #000;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 1px 1px 0 #000;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .order-btn:hover {
+      filter: brightness(1.06);
     }
 
     .more-popout {
@@ -554,9 +579,9 @@
       <div class="container hero-inner">
         <div class="hero-content">
           <p class="eyebrow">live legendary</p>
-          <h1>crispy, clean,<br />and a little bit<br /><span>cool ig</span></h1>
+          <h1>crispy, clean,<br />and a little bit<br /><span>legendary.</span></h1>
           <p class="hero-sub">
-           thanks for checking ts out
+            limited drops only. once they’re gone, they’re gone.
           </p>
           <div class="hero-actions">
             <a href="#flavors" class="btn">see the flavours</a>
@@ -565,7 +590,7 @@
         </div>
         <div class="hero-visual">
           <img src="images/original.png" alt="Frigg Soda original can" class="hero-can" />
-          <span class="hero-note">Frigg Soda</span>
+          <span class="hero-note">hand-packed ♥</span>
         </div>
       </div>
     </section>
@@ -574,7 +599,7 @@
       <div class="container">
         <div class="section-header">
           <p class="eyebrow">limiteds + the og</p>
-          <h2>pick your stuff</h2>
+          <h2>pick your poison.</h2>
         </div>
 
         <div class="flavor-grid">
@@ -586,13 +611,16 @@
               <span class="tag">og</span>
               <h3>Original</h3>
               <p class="tagline">the one that started it</p>
-              <p class="desc">the fuckin' OG bro he started it</p>
+              <p class="desc">clean, crisp, and somehow still the favourite.</p>
               <p class="price">£1.50</p>
-              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-original">more info</button>
+              <div class="card-actions">
+                <button class="more-button" type="button" aria-expanded="false" aria-controls="more-original">more info</button>
+                <a class="order-btn" href="order.html?flavor=original">order</a>
+              </div>
               <div class="more-popout" id="more-original" role="region" aria-labelledby="more-title-original" hidden>
                 <button class="more-close" type="button" aria-label="Close details">✕</button>
                 <h4 id="more-title-original">About Original</h4>
-                <p>kinda fruity type stuff</p>
+                <p>lightly fruity with a proper fizz. the one we keep coming back to.</p>
               </div>
             </div>
           </article>
@@ -602,15 +630,19 @@
               <img src="images/dashing-berry.png" alt="Frigg Dashing Berry" />
             </div>
             <div class="flavor-info">
+              <span class="tag limited">Limited</span>
               <h3>Dashing Berry</h3>
               <p class="tagline">proper berry</p>
-              <p class="desc">it says what it is.</p>
+              <p class="desc">lowkey one of the best things we’ve made.</p>
               <p class="price">£1.50</p>
-              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-berry">more info</button>
+              <div class="card-actions">
+                <button class="more-button" type="button" aria-expanded="false" aria-controls="more-berry">more info</button>
+                <a class="order-btn" href="order.html?flavor=berry">order</a>
+              </div>
               <div class="more-popout" id="more-berry" role="region" aria-labelledby="more-title-berry" hidden>
                 <button class="more-close" type="button" aria-label="Close details">✕</button>
                 <h4 id="more-title-berry">About Dashing Berry</h4>
-                <p>very berry</p>
+                <p>heaps of berry. bright, a bit sharp, finishes clean.</p>
               </div>
             </div>
           </article>
@@ -620,15 +652,19 @@
               <img src="images/iced-latte.png" alt="Frigg Iced Latte" />
             </div>
             <div class="flavor-info">
+              <span class="tag limited">Limited</span>
               <h3>Iced Latte</h3>
-              <p class="tagline">coffee flav</p>
-              <p class="desc">coffee shit</p>
+              <p class="tagline">coffee, but make it soda</p>
+              <p class="desc">bitter in the best way. afternoon saviour.</p>
               <p class="price">£1.50</p>
-              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-latte">more info</button>
+              <div class="card-actions">
+                <button class="more-button" type="button" aria-expanded="false" aria-controls="more-latte">more info</button>
+                <a class="order-btn" href="order.html?flavor=latte">order</a>
+              </div>
               <div class="more-popout" id="more-latte" role="region" aria-labelledby="more-title-latte" hidden>
                 <button class="more-close" type="button" aria-label="Close details">✕</button>
                 <h4 id="more-title-latte">About Iced Latte</h4>
-                <p>yes we use real coffee</p>
+                <p>real coffee notes, light fizz, no syrupy nonsense.</p>
               </div>
             </div>
           </article>
@@ -640,14 +676,17 @@
             <div class="flavor-info">
               <span class="tag limited">Limited</span>
               <h3>Femboy Fizz</h3>
-              <p class="tagline">the sweetest and most femboy</p>
-              <p class="desc">blueberry shit</p>
+              <p class="tagline">sweet & chaotic</p>
+              <p class="desc">blueberry candy floss energy. unapologetic.</p>
               <p class="price">£2.00</p>
-              <button class="more-button" type="button" aria-expanded="false" aria-controls="more-fizz">more info</button>
+              <div class="card-actions">
+                <button class="more-button" type="button" aria-expanded="false" aria-controls="more-fizz">more info</button>
+                <a class="order-btn" href="order.html?flavor=fizz">order</a>
+              </div>
               <div class="more-popout" id="more-fizz" role="region" aria-labelledby="more-title-fizz" hidden>
                 <button class="more-close" type="button" aria-label="Close details">✕</button>
                 <h4 id="more-title-fizz">About Femboy Fizz</h4>
-                <p>blueberry candy floss bro its so sweet it makes my tounge burn [im joking]</p>
+                <p>blueberry candy floss. loud, sweet, and somehow still refreshing.</p>
               </div>
             </div>
           </article>
@@ -659,12 +698,13 @@
       <div class="container about-inner">
         <div class="about-text">
           <p class="eyebrow">the story so far</p>
-          <h2>made for frigg10 fans lets be real</h2></h2>
+          <h2>made for people who just want something good</h2>
           <p>
-            started as a lil joke ig and i made it real idk but pls help us make this
+            started as a half-joke between friends. then we actually made the cans.
+            five hours of html later and somehow it’s a real thing.
           </p>
           <p>
-            please buy smt cuz i kinda want this to grow into smth bigger!!
+            every order genuinely helps. if this grows into something bigger one day, it’ll be because of the people who backed the early drops.
           </p>
         </div>
         <div class="about-stats">
@@ -689,7 +729,7 @@
         <h2>what’s next?</h2>
         <p>
           big dream is getting into actual shops one day.
-          for now ill just sell this shit on here and deliver in school paha
+          for now, every can sold keeps the lights on and the next flavour possible.
         </p>
         <div class="contact-actions">
           <a href="mailto:friggsoda@gmail.com" class="btn">friggsoda@gmail.com</a>
@@ -702,7 +742,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <span class="logo-sm">Frigg Soda ♥</span>
-      <p>© 2026 · google fonts credit, frigg soda lmtd and all barr products and reference. please email us if any problems occur</p>
+      <p>© 2026 · made with zero budget and too much caffeine</p>
     </div>
   </footer>
 
