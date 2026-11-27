@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order — Frigg Soda</title>
+  <meta name="description" content="Order Frigg Soda. Limited editions delivered local." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-elevated: #0c0c0c;
+      --bg-card: #111111;
+      --text: #e8e4dc;
+      --text-muted: #8a8680;
+      --accent: #5ec8c0;
+      --accent-soft: rgba(94, 200, 192, 0.12);
+      --accent-warm: #e8a87c;
+      --border: rgba(255, 255, 255, 0.09);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --font: "Inter", system-ui, sans-serif;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-hand: "Caveat", cursive;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      font-family: var(--font);
+      background: #000;
+      color: var(--text);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 9999;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      padding-inline: 1.25rem;
+    }
+
+    @media (min-width: 900px) {
+      .container { padding-inline: 2rem; }
+    }
+
+    @media (min-width: 1400px) {
+      .container { padding-inline: 3rem; }
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .nav a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.05rem;
+      border-radius: 3px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.88rem;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 #000;
+      outline: 1px solid rgba(0,0,0,0.3);
+      font-family: inherit;
+    }
+
+    .btn:hover { filter: brightness(1.06); }
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 #000;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      box-shadow: none;
+      outline: none;
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+
+    .btn-sm {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.82rem;
+    }
+
+    /* Order page layout */
+    .order-page {
+      padding: 2.5rem 0 4rem;
+    }
+
+    .order-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2rem;
+      align-items: start;
+      max-width: 920px;
+    }
+
+    .order-summary {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+      position: sticky;
+      top: 72px;
+    }
+
+    .order-summary h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .summary-can {
+      width: 110px;
+      margin: 0 auto 1rem;
+      filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.5));
+      transform: rotate(-5deg);
+    }
+
+    .summary-flavor {
+      text-align: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .summary-flavor h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .summary-flavor p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .summary-rows {
+      border-top: 1px solid var(--border);
+      padding-top: 0.85rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .summary-row span:last-child {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .summary-row.total {
+      margin-top: 0.35rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+    }
+
+    .summary-row.total span:last-child {
+      color: var(--accent);
+    }
+
+    .order-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.35rem 1.25rem 1.4rem;
+    }
+
+    .order-form-card h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 1.85rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .order-form-card .sub {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .field label span {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 3px;
+      border: 1px solid var(--border-strong);
+      background: #0a0a0a;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .field select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8680' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2rem;
+    }
+
+    .delivery-options {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .delivery-option {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: #0a0a0a;
+      cursor: pointer;
+    }
+
+    .delivery-option:hover {
+      border-color: var(--border-strong);
+    }
+
+    .delivery-option:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .delivery-option input {
+      width: auto;
+      accent-color: var(--accent);
+    }
+
+    .delivery-option .opt-text {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .delivery-option .opt-extra {
+      color: var(--text-muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.35rem;
+      align-items: center;
+    }
+
+    .form-note {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .status {
+      margin-top: 1rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .status.show { display: block; }
+
+    .status.ok {
+      background: rgba(94, 200, 192, 0.12);
+      border: 1px solid rgba(94, 200, 192, 0.35);
+      color: var(--accent);
+    }
+
+    .status.err {
+      background: rgba(232, 100, 100, 0.1);
+      border: 1px solid rgba(232, 100, 100, 0.3);
+      color: #e88a8a;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.1rem 0 1.5rem;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-sm {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .site-footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 800px) {
+      .order-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .order-summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding-inline: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Frigg<span>Soda</span></a>
+      <nav class="nav">
+        <a href="index.html#flavors">flavours</a>
+        <a href="index.html#about">about</a>
+        <a href="index.html" class="btn btn-sm btn-ghost">← back</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="order-page">
+    <div class="container">
+      <div class="order-wrap">
+        <!-- Summary -->
+        <aside class="order-summary">
+          <h2>your order</h2>
+          <img id="summaryImg" class="summary-can" src="images/original.png" alt="" />
+          <div class="summary-flavor">
+            <h3 id="summaryName">Original</h3>
+            <p id="summaryTag">the one that started it</p>
+          </div>
+          <div class="summary-rows">
+            <div class="summary-row">
+              <span>can</span>
+              <span id="summaryBase">£1.50</span>
+            </div>
+            <div class="summary-row">
+              <span>delivery</span>
+              <span id="summaryDelivery">£0.50</span>
+            </div>
+            <div class="summary-row total">
+              <span>total</span>
+              <span id="summaryTotal">£2.00</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Form -->
+        <div class="order-form-card">
+          <h1>place order</h1>
+          <p class="sub">fill this in and we’ll get it out to you.</p>
+
+          <!--
+            EMAIL SETUP (important):
+            1. Go to https://web3forms.com
+            2. Enter friggsoda@gmail.com and create a free access key
+            3. Paste the key into the hidden access_key field below
+          -->
+          <form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="30ec9d8c-64d2-42b0-a52f-2b760f770f73" />
+            <input type="hidden" name="subject" value="New Frigg Soda Order" />
+            <input type="hidden" name="from_name" value="Frigg Soda Orders" />
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <input type="hidden" name="flavor" id="fieldFlavor" value="Original" />
+            <input type="hidden" name="base_price" id="fieldBasePrice" value="£1.50" />
+            <input type="hidden" name="delivery_fee" id="fieldDeliveryFee" value="£0.50" />
+            <input type="hidden" name="total" id="fieldTotal" value="£2.00" />
+            <input type="hidden" name="delivery_speed" id="fieldDeliverySpeed" value="5 days" />
+
+            <div class="field">
+              <label for="fullName">1. Full Name</label>
+              <input id="fullName" name="full_name" type="text" required autocomplete="name" placeholder="your full name" />
+            </div>
+
+            <div class="field">
+              <label for="address">2. House Address</label>
+              <input id="address" name="house_address" type="text" required autocomplete="street-address" placeholder="street + house number" />
+            </div>
+
+            <div class="field">
+              <label for="location">3. Location</label>
+              <select id="location" name="location" required>
+                <option value="" disabled selected>pick your area</option>
+                <option value="Alves">Alves</option>
+                <option value="Forres">Forres</option>
+                <option value="Elgin">Elgin</option>
+                <option value="Lossiemouth">Lossiemouth</option>
+                <option value="Fochabers">Fochabers</option>
+                <option value="Keith">Keith</option>
+                <option value="Nairn">Nairn</option>
+                <option value="Inverness">Inverness</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="postcode">4. Postcode</label>
+              <input id="postcode" name="postcode" type="text" required autocomplete="postal-code" placeholder="e.g. IV36 1AA" />
+            </div>
+
+            <div class="field">
+              <label>5. How fast for delivery</label>
+              <div class="delivery-options">
+                <label class="delivery-option">
+                  <input type="radio" name="delivery_choice" value="3" data-extra="1.50" data-label="3 days" />
+                  <span class="opt-text">
+                    <span>3 days</span>
+                    <span class="opt-extra">+£1.50</span>
+                  </span>
+                </label>
+                <label class="delivery-option">
+                  <input type="radio" name="delivery_choice" value="4" data-extra="1.00" data-label="4 days" />
+                  <span class="opt-text">
+                    <span>4 days</span>
+                    <span class="opt-extra">+£1.00</span>
+                  </span>
+                </label>
+                <label class="delivery-option">
+                  <input type="radio" name="delivery_choice" value="5" data-extra="0.50" data-label="5 days" checked />
+                  <span class="opt-text">
+                    <span>5 days</span>
+                    <span class="opt-extra">+£0.50</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="submit" id="submitBtn">Order</button>
+              <a href="index.html#flavors" class="btn btn-ghost">cancel</a>
+            </div>
+
+            <p class="form-note">
+              local delivery only. you’ll get a reply once the order’s seen.
+            </p>
+
+            <div id="status" class="status" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="logo-sm">Frigg Soda ♥</span>
+      <p>© 2026 · made with zero budget and too much caffeine</p>
+    </div>
+  </footer>
+
+  <script>
+    const flavors = {
+      original: {
+        name: "Original",
+        tag: "the one that started it",
+        price: 1.5,
+        img: "images/original.png"
+      },
+      berry: {
+        name: "Dashing Berry",
+        tag: "proper berry",
+        price: 1.5,
+        img: "images/dashing-berry.png"
+      },
+      latte: {
+        name: "Iced Latte",
+        tag: "coffee, but make it soda",
+        price: 1.5,
+        img: "images/iced-latte.png"
+      },
+      fizz: {
+        name: "Femboy Fizz",
+        tag: "sweet & chaotic",
+        price: 2.0,
+        img: "images/femboy-fizz.png"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const key = (params.get("flavor") || "original").toLowerCase();
+    const selected = flavors[key] || flavors.original;
+
+    const money = (n) => "£" + n.toFixed(2);
+
+    function updateTotals() {
+      const chosen = document.querySelector('input[name="delivery_choice"]:checked');
+      const extra = chosen ? parseFloat(chosen.dataset.extra) : 0.5;
+      const label = chosen ? chosen.dataset.label : "5 days";
+      const total = selected.price + extra;
+
+      document.getElementById("summaryBase").textContent = money(selected.price);
+      document.getElementById("summaryDelivery").textContent = money(extra);
+      document.getElementById("summaryTotal").textContent = money(total);
+
+      document.getElementById("fieldFlavor").value = selected.name;
+      document.getElementById("fieldBasePrice").value = money(selected.price);
+      document.getElementById("fieldDeliveryFee").value = money(extra);
+      document.getElementById("fieldTotal").value = money(total);
+      document.getElementById("fieldDeliverySpeed").value = label;
+    }
+
+    // fill summary
+    document.getElementById("summaryImg").src = selected.img;
+    document.getElementById("summaryImg").alt = selected.name;
+    document.getElementById("summaryName").textContent = selected.name;
+    document.getElementById("summaryTag").textContent = selected.tag;
+    updateTotals();
+
+    document.querySelectorAll('input[name="delivery_choice"]').forEach((el) => {
+      el.addEventListener("change", updateTotals);
+    });
+
+    const form = document.getElementById("orderForm");
+    const status = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      updateTotals();
+
+      const accessKey = form.querySelector('input[name="access_key"]').value;
+      if (!accessKey) {
+        status.className = "status show err";
+        status.textContent = "Order form not set up yet.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "sending…";
+      status.className = "status";
+      status.textContent = "";
+
+      try {
+        const data = new FormData(form);
+        // Make the email body clear
+        data.set("message",
+          `NEW ORDER\n` +
+          `──────────────\n` +
+          `Flavor: ${data.get("flavor")}\n` +
+          `Base price: ${data.get("base_price")}\n` +
+          `Delivery: ${data.get("delivery_speed")} (${data.get("delivery_fee")})\n` +
+          `Total: ${data.get("total")}\n\n` +
+          `CUSTOMER\n` +
+          `──────────────\n` +
+          `Name: ${data.get("full_name")}\n` +
+          `Address: ${data.get("house_address")}\n` +
+          `Location: ${data.get("location")}\n` +
+          `Postcode: ${data.get("postcode")}`
+        );
+
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" }
+        });
+
+        const json = await res.json();
+
+        if (res.ok && json.success) {
+          status.className = "status show ok";
+          status.textContent = "order sent — check friggsoda@gmail.com for the full details.";
+          form.reset();
+          // re-select default delivery after reset
+          const five = form.querySelector('input[name="delivery_choice"][value="5"]');
+          if (five) five.checked = true;
+          updateTotals();
+        } else {
+          throw new Error(json.message || "Something went wrong");
+        }
+      } catch (err) {
+        status.className = "status show err";
+        status.textContent = "couldn’t send — try again or email friggsoda@gmail.com directly.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Order";
+      }
+    });
+  </script>
+</body>
+</html>
