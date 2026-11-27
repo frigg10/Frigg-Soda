@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order — Frigg Soda</title>
+  <title>Order // Frigg Soda</title>
   <meta name="description" content="Order Frigg Soda. Limited editions delivered local." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -671,19 +671,13 @@
         const json = await res.json();
 
         if (res.ok && json.success) {
-          status.className = "status show ok";
-          status.textContent = "order sent — check friggsoda@gmail.com for the full details.";
-          form.reset();
-          // re-select default delivery after reset
-          const five = form.querySelector('input[name="delivery_choice"][value="5"]');
-          if (five) five.checked = true;
-          updateTotals();
+          window.location.href = "index.html";
         } else {
           throw new Error(json.message || "Something went wrong");
         }
       } catch (err) {
         status.className = "status show err";
-        status.textContent = "couldn’t send — try again or email friggsoda@gmail.com directly.";
+        status.textContent = "couldn’t send — try again.";
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Order";
